@@ -1,0 +1,3 @@
+Manifest-Version: 1.0
+Main-Class: Lectures.Lecture4.Lacture3.ClassStructure
+
