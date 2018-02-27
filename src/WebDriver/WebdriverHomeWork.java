@@ -1,5 +1,6 @@
 package WebDriver;
 
+import HomeWork.Log.AbstractLogger;
 import HomeWork.Log.ConsoleLogger;
 import HomeWork.Log.Logger;
 import HomeWork.UrlBuilder.Url;
@@ -8,7 +9,7 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 
 import java.io.IOException;
 
-public class WebdriverHomeWork {
+public class WebdriverHomeWork{
         public static void main(String[] args) throws IOException {
             Logger logger = new ConsoleLogger();
 
@@ -19,8 +20,9 @@ public class WebdriverHomeWork {
             logger.log("Create webdriver instance");
             WebDriver driver = new FirefoxDriver();
 
-            logger.log("Navigate to Url - Google");
+            logger.log("Navigate to Url ");
             driver.get(urlOfComments.getUrl());
+
 
         }
 }

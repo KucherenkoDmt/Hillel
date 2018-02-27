@@ -10,7 +10,7 @@ public abstract class AbstractLogger implements Logger{
     private SimpleDateFormat sf = new SimpleDateFormat("HH:mm:ss.SSS");
 
     @Override
-        public String log(String text) throws IOException {
+        public  String log(String text) throws IOException {
 
         Date date = new Date();
         Thread.currentThread().getName();
@@ -27,5 +27,5 @@ public abstract class AbstractLogger implements Logger{
         fileWriter.close();
     }
 
-    protected  void doLogging(String stringToLog) throws IOException{}
+    protected abstract void doLogging(String stringToLog) throws IOException;
 }
