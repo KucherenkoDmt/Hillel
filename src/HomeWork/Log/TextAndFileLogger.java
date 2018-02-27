@@ -2,9 +2,9 @@ package HomeWork.Log;
 
 import java.io.IOException;
 
-public class TextAndFilleLogger extends AbstractLogger{
+public class TextAndFileLogger extends AbstractLogger{
     @Override
-    protected void doLogging(String stringToLog) {
+    public void doLogging(String stringToLog) {
         System.out.println(stringToLog);
         try {
             toFile(stringToLog);

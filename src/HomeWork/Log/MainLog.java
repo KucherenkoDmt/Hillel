@@ -19,7 +19,7 @@ public class MainLog {
     }
 
     private static void testLogin() throws IOException {
-        Log log1 = new Log();
+        ConsoleLogger log1 = new ConsoleLogger();
         log1.log("Start browser");
         log1.log("Open website");
         log1.log("Login user");

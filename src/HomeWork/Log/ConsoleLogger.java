@@ -1,7 +1,7 @@
 package HomeWork.Log;
 
 
-public class Log extends AbstractLogger {
+public class ConsoleLogger extends AbstractLogger {
 
     @Override
     protected void doLogging(String stringToLog) {

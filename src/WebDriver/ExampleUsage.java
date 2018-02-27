@@ -1,6 +1,6 @@
 package WebDriver;
 
-import HomeWork.Log.Log;
+import HomeWork.Log.ConsoleLogger;
 import HomeWork.Log.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -14,7 +14,7 @@ import java.util.List;
 
 public class ExampleUsage {
     public static void main(String[] args) throws IOException {
-        Logger logger = new Log();
+        Logger logger = new ConsoleLogger();
 
         logger.log("Create webdriver instance");
         WebDriver driver = new ChromeDriver();
