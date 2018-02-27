@@ -2,7 +2,6 @@ package WebDriver;
 
 import HomeWork.Log.ConsoleLogger;
 import HomeWork.Log.Logger;
-import HomeWork.Log.TextAndFileLogger;
 
 import java.io.IOException;
 
