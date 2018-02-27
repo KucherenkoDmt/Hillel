@@ -1,4 +1,4 @@
-package Lectures.Lecture4.Lacture3;
+package Lectures.Lacture3;
 
 /*
 * Autor: Dmitro Kucherenko

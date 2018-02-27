@@ -1,4 +1,4 @@
-package Lectures.WebDriver;
+package WebDriver;
 
 import HomeWork.Log.Log;
 import HomeWork.Log.Logger;
