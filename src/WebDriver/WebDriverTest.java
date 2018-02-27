@@ -10,12 +10,7 @@ import static com.sun.webkit.perf.WCFontPerfLogger.log;
 
 public class WebDriverTest {
     public static void main(String[] args) throws IOException {
-        Logger logger = new ConsoleLogger();
-      //  logger.log("First log");
 
-        log();
-
-        new Log();
 
     }
 }
