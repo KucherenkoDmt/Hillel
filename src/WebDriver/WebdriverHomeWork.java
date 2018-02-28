@@ -47,7 +47,8 @@ public class WebdriverHomeWork extends AbstractLogger {
         driver.findElement(By.id("Number")).sendKeys(number + "");
 
         log("Add 1 category");
-        driver.findElement(By.xpath("//*[@class=\"categoryitem\"]/span[contains(text(),'Cat1')]/../*[@type]")).click();
+        String categories = "Cat1";
+        driver.findElement(By.xpath("//*[@class=\"categoryitem\"]/span[contains(text(),'" + categories + "')]/../*[@type]")).click();
         driver.findElement(By.name("CurSelect")).click();
 
         log("Click save");
@@ -62,18 +63,20 @@ public class WebdriverHomeWork extends AbstractLogger {
             counter++;
             driver.get("http://comments.azurewebsites.net/?page=" + counter);
         }
-        log("1");
+        log("Check comment's number");
+        boolean namberAndCategories = false;
         String numberOfcomment = driver.findElement(By.xpath("//*[@class='textcolumn'][contains(text(),'" + commentText + "')]/../*[@class='numbercolumn']")).getText();
+        int number2 = Integer.parseInt(numberOfcomment);
+        String categoriesOfcomment = driver.findElement(By.xpath("//*[@class='textcolumn'][contains(text(),'" + commentText + "')]/../*[@class='categorycolumn']")).getText();
+        namberAndCategories = (number == number2 && categories.equals(categoriesOfcomment));
 
-        log("2");
+        log("Value of comments is the same: " + namberAndCategories);
 
-
-        log("3");
         System.out.println(numberOfcomment);
 
 
         log("Close driver");
-        // driver.quit();
+         driver.quit();
     }
 
     @Override
