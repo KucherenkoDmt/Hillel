@@ -1,20 +1,12 @@
 package WebDriver;
 
 import HomeWork.Log.AbstractLogger;
-import HomeWork.Log.ConsoleLogger;
-import HomeWork.Log.Logger;
 import HomeWork.UrlBuilder.Url;
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.firefox.FirefoxDriver;
-import org.openqa.selenium.remote.server.handler.ElementEquality;
-import org.openqa.selenium.remote.server.handler.FindElement;
-import org.openqa.selenium.support.ui.ExpectedCondition;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
+
 
 import javax.xml.bind.Element;
 import java.io.IOException;
@@ -71,9 +63,6 @@ public class WebdriverHomeWork extends AbstractLogger {
         namberAndCategories = (number == number2 && categories.equals(categoriesOfcomment));
 
         log("Value of comments is the same: " + namberAndCategories);
-
-        System.out.println(numberOfcomment);
-
 
         log("Close driver");
          driver.quit();
