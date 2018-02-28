@@ -5,15 +5,23 @@ import HomeWork.Log.ConsoleLogger;
 import HomeWork.Log.Logger;
 import HomeWork.UrlBuilder.Url;
 import org.openqa.selenium.By;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.remote.server.handler.ElementEquality;
 import org.openqa.selenium.remote.server.handler.FindElement;
+import org.openqa.selenium.support.ui.ExpectedCondition;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
+import javax.xml.bind.Element;
 import java.io.IOException;
 
 public class WebdriverHomeWork extends AbstractLogger {
+    WebDriver driver = new ChromeDriver();
+
     public static void main(String[] args) throws IOException {
         WebdriverHomeWork webdriverHomeWork = new WebdriverHomeWork();
         webdriverHomeWork.webDriverhomeWork();
@@ -24,42 +32,61 @@ public class WebdriverHomeWork extends AbstractLogger {
         Url urlOfComments = new Url.UrlBuilder("comments.azurewebsites.net").build();
         System.out.println(urlOfComments.getUrl());
 
-        log("Create webdriver instance");
-        WebDriver driver = new ChromeDriver();
-
         log("Navigate to Url ");
         driver.get(urlOfComments.getUrl());
 
-        log("get element \"New...\" and click");
+        log("Get element \"New...\" and click");
         driver.findElement(By.xpath("//*[@id='command-navigation']/input[1]")).click();
 
         log("Add comment text");
-        String comentText = "some text"+(int)Math.random();
-        driver.findElement(By.id("Text")).sendKeys(comentText);
+        int number = (int) (999 * Math.random());
+        String commentText = "some text" + number;
+        driver.findElement(By.id("Text")).sendKeys(commentText);
 
         log("Add original number");
-        int number = (int) (999*Math.random());
-        driver.findElement(By.id("Number")).sendKeys(number+"");
+        driver.findElement(By.id("Number")).sendKeys(number + "");
 
         log("Add 1 category");
         driver.findElement(By.xpath("//*[@class=\"categoryitem\"]/span[contains(text(),'Cat1')]/../*[@type]")).click();
         driver.findElement(By.name("CurSelect")).click();
 
-        log("click save");
+        log("Click save");
         driver.findElement(By.xpath("//*[@id='editor-navigation']/input[1]")).click();
 
         log("Click Return");
         driver.findElement(By.linkText("Return")).click();
 
-        log("Check comment");
+        log("Check comment on all pages");
+        int counter = 1;
+        while (!isElementPresent(By.xpath("//*[@class='textcolumn'][contains(text(),'" + commentText + "')]"))) {
+            counter++;
+            driver.get("http://comments.azurewebsites.net/?page=" + counter);
+        }
+        log("1");
+        String numberOfcomment = driver.findElement(By.xpath("//*[@class='textcolumn'][contains(text(),'" + commentText + "')]/../*[@class='numbercolumn']")).getText();
+
+        log("2");
 
 
-        log("Closing webdriver");
-       // driver.quit();
+        log("3");
+        System.out.println(numberOfcomment);
+
+
+        log("Close driver");
+        // driver.quit();
     }
 
     @Override
     protected void doLogging(String stringToLog) throws IOException {
         System.out.println(stringToLog);
+    }
+
+    private boolean isElementPresent(By by) {
+        try {
+            driver.findElement(by);
+            return true;
+        } catch (NoSuchElementException e) {
+            return false;
+        }
     }
 }
