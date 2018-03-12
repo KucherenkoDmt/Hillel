@@ -15,12 +15,12 @@ import java.io.IOException;
 public class WebdriverHomeWork extends AbstractLogger {
     WebDriver driver = new ChromeDriver();
 
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) throws IOException, InterruptedException {
         WebdriverHomeWork webdriverHomeWork = new WebdriverHomeWork();
         webdriverHomeWork.webDriverhomeWork();
     }
 
-    public void webDriverhomeWork() throws IOException {
+    public void webDriverhomeWork() throws IOException, InterruptedException {
         log("Create url");
         Url urlOfComments = new Url.UrlBuilder("comments.azurewebsites.net").build();
         System.out.println(urlOfComments.getUrl());
@@ -46,6 +46,7 @@ public class WebdriverHomeWork extends AbstractLogger {
 
         log("Click save");
         driver.findElement(By.xpath("//*[@id='editor-navigation']/input[1]")).click();
+        Thread.sleep(2500);
 
         log("Click Return");
         driver.findElement(By.linkText("Return")).click();
@@ -54,6 +55,7 @@ public class WebdriverHomeWork extends AbstractLogger {
         int counter = 1;
         while (!isElementPresent(By.xpath("//*[@class='textcolumn'][contains(text(),'" + commentText + "')]"))) {
             counter++;
+            Thread.sleep(500);
             driver.get("http://comments.azurewebsites.net/?page=" + counter);
         }
         log("Check comment's number");
