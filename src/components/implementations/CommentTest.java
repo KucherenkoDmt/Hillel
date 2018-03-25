@@ -1,3 +1,5 @@
+package components.implementations;
+
 import HomeWork.Log.ConsoleLogger;
 import HomeWork.Log.Logger;
 import HomeWork.UrlBuilder.Url;
@@ -17,7 +19,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import java.io.IOException;
 import java.util.concurrent.ThreadLocalRandom;
 
-public class WorkChenges {
+public class CommentTest {
     WebDriver driver;
     Logger logger;
     WebDriverWait wait;

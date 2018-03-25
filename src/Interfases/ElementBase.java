@@ -1,4 +1,4 @@
-package WebDriver;
+package Interfases;
 
 public interface ElementBase {
     boolean isDisplayd();

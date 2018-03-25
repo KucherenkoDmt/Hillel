@@ -2,9 +2,9 @@ package WebDriver;
 
 import org.openqa.selenium.WebElement;
 
-public class Checkbox extends Element implements Interfases.Checkbox{
+public class Checkbox2 extends Element implements Interfases.Checkbox{
 
-    public Checkbox(WebElement element) {
+    public Checkbox2(WebElement element) {
         super(element);
     }
 

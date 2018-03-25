@@ -1,5 +1,7 @@
 package WebDriver;
 
+import Interfases.ElementBase;
+import Interfases.Getter;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 

@@ -1,4 +1,4 @@
-package WebDriver;
+package Interfases;
 
 import org.openqa.selenium.WebElement;
 
