@@ -1,4 +1,4 @@
-package Interfases;
+package InterfasesForElementBase;
 
 import org.openqa.selenium.WebElement;
 

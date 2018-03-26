@@ -1,4 +1,4 @@
-package Interfases;
+package InterfasesForElementBase;
 
 public interface Input {
     void typeText(String text);

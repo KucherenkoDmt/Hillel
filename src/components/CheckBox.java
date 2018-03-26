@@ -1,12 +1,13 @@
-package WebDriver;
+package components.implementations;
 
 import org.openqa.selenium.WebElement;
 
-public class Checkbox2 extends Element implements Interfases.Checkbox{
-
-    public Checkbox2(WebElement element) {
+public class CheckBox extends ElementBase implements components.interfaces.CheckBox
+{
+    public CheckBox(WebElement element) {
         super(element);
     }
+
 
     @Override
     public void check() {
@@ -17,13 +18,14 @@ public class Checkbox2 extends Element implements Interfases.Checkbox{
 
     @Override
     public void unCheck() {
-        if(isChecked()){
+        if (isChecked()){
             click();
         }
+
     }
 
     @Override
     public boolean isChecked() {
-        return getElement().isSelected();
+        return getWebElement().isSelected();
     }
 }

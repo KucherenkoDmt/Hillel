@@ -1,7 +1,7 @@
-package Interfases;
+package components.InterfasesForElementBase;
 
 public interface ElementBase {
-    boolean isDisplayd();
+    boolean isDisplayed();
     void click();
     String getText();
 }
