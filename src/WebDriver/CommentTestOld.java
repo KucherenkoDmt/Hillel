@@ -1,4 +1,4 @@
-package components.implementations;
+package WebDriver;
 
 import HomeWork.Log.ConsoleLogger;
 import HomeWork.Log.Logger;
@@ -18,7 +18,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import java.io.IOException;
 import java.util.concurrent.ThreadLocalRandom;
 
-public class CommentTest {
+public class CommentTestOld {
     WebDriver driver;
     Logger logger;
     WebDriverWait wait;

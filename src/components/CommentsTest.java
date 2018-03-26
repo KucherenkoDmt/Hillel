@@ -1,8 +1,9 @@
-package WebDriver;
+package components;
 
 import HomeWork.Log.ConsoleLogger;
 import HomeWork.Log.Logger;
 import HomeWork.UrlBuilder.Url;
+import components.CommentFielsHomeWork.CommentFiels;
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
@@ -12,20 +13,21 @@ import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.io.IOException;
 import java.util.concurrent.ThreadLocalRandom;
 
-public class WorkChenges {
+public class CommentsTest {
     WebDriver driver;
     Logger logger;
     WebDriverWait wait;
 
     @Before
     public void setUp() throws IOException {
-        driver = new ChromeDriver();
+        driver = new FirefoxDriver();
         logger = new ConsoleLogger();
         wait = new WebDriverWait(driver, 10);
         log("Create url");
@@ -39,8 +41,6 @@ public class WorkChenges {
     @Test
     public void addComment() throws IOException, InterruptedException {
 
-
-
         int number = ThreadLocalRandom.current().nextInt(50, 999);
         log("Get element \"New...\" and click");
         click("//input[@value='New...']");
@@ -48,10 +48,15 @@ public class WorkChenges {
 
         log("Add comment text");
         String commentText = "some text" + number;
-        type("//*[@id='Text']",commentText);
+     //   type("//*[@id='Text']", commentText);
 
         log("Add original number");
-        type("//*[@id='Number']",number + "");
+     //   type("//*[@id='Number']", number + "");
+
+        CommentFiels commentfiels = new CommentFiels(driver.findElement(By.xpath("//div[@id='commentfields']")));
+        commentfiels.commentText().typeText(commentText);
+        commentfiels.commentNumber().typeText(number + "");
+        commentfiels.commentActive().check();
 
         log("Add 1 category");
         String categories = "Cat1";
@@ -59,6 +64,11 @@ public class WorkChenges {
         //  categoryCheckBox.click();
         click("//*[@class=\"categoryitem\"]/span[contains(text(),'" + categories + "')]/../*[@type]");
         driver.findElement(By.name("CurSelect")).click();
+       /* WebElement element = driver.findElement(By.xpath("//div[@class='categoryselector']"));
+        CategorySelector categorySelector = new CategorySelector(element);
+        categorySelector.selectCat().categories().get(0).checkBox().check();
+        categorySelector.selectedButtons().add().click();
+        categorySelector.availableCats().categories().size();*/
 
         log("Click save");
         click("//*[@id='editor-navigation']/input[1]");
@@ -80,7 +90,6 @@ public class WorkChenges {
         Assert.assertEquals("number is not the same", number, number2);
         Assert.assertEquals("categories is not the same", categories, categoriesOfcomment);
         //  log("Value of comments is the same: " + namberAndCategories);
-
     }
 
     @Test
@@ -113,17 +122,18 @@ public class WorkChenges {
         while (!isElementPresent(By.xpath("//*[@class='textcolumn'][contains(text(),'" + commentText + "')]"))) {
             Thread.sleep(500);
             log("On page " + pageNumber + " resualt of looking for comment is: " + isElementPresent(By.xpath("//*[@class='textcolumn'][contains(text(),'" + commentText + "')]")));
-            if(driver.findElement(By.className("webgrid-footer")).findElements(By.partialLinkText(">")).size()!=0){
+            if (driver.findElement(By.className("webgrid-footer")).findElements(By.partialLinkText(">")).size() != 0) {
                 driver.findElement(By.className("webgrid-footer")).findElement(By.partialLinkText(">")).click();
-            }
-            else {
+            } else {
                 log("Comment is not on page");
-                return false;}
+                return false;
+            }
             pageNumber++;
         }
         log("Comment is on page: " + pageNumber++);
         return true;
     }
+
     private void findComment(String commentText) throws IOException, InterruptedException {
         int pageNumber = 1;
         while (!isElementPresent(By.xpath("//*[@class='textcolumn'][contains(text(),'" + commentText + "')]"))) {
@@ -149,10 +159,11 @@ public class WorkChenges {
         }
     }
 
-    public void click(String xpath){
+    public void click(String xpath) {
         driver.findElement(By.xpath(xpath)).click();
     }
-    public void type(String xpath, String text){
+
+    public void type(String xpath, String text) {
         driver.findElement(By.xpath(xpath)).clear();
         driver.findElement(By.xpath(xpath)).sendKeys(text);
     }

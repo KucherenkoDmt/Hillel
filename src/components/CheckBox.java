@@ -8,7 +8,6 @@ public class CheckBox extends ElementBase implements Checkbox {
         super(element);
     }
 
-
     @Override
     public void check() {
         if(!isChecked()){
