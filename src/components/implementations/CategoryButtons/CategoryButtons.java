@@ -1,6 +1,6 @@
 package components.implementations.CategoryButtons;
 
-import components.implementations.ElementBase;
+import components.ElementBase;
 import org.openqa.selenium.WebElement;
 
 public class CategoryButtons extends ElementBase {

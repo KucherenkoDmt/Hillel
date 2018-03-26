@@ -1,13 +1,13 @@
-package components.implementations;
+package components;
 
-import components.interfaces.Element;
-import components.interfaces.Getter;
+import components.InterfasesForElementBase.ElementBaseInterface;
+import components.InterfasesForElementBase.Getter;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
 import java.util.List;
 
-public class ElementBase implements Element, Getter {
+public class ElementBase implements Getter, ElementBaseInterface {
 
     private WebElement element;
 
@@ -16,7 +16,6 @@ public class ElementBase implements Element, Getter {
     public ElementBase(WebElement element){
         this.element = element;
     }
-
 
     @Override
     public void click() {
@@ -44,8 +43,6 @@ public class ElementBase implements Element, Getter {
     }
 
     protected WebElement getWebElement(){
-        element.
-        return this.element;
-
+          return this.element;
     }
 }

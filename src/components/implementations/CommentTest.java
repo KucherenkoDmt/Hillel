@@ -3,7 +3,6 @@ package components.implementations;
 import HomeWork.Log.ConsoleLogger;
 import HomeWork.Log.Logger;
 import HomeWork.UrlBuilder.Url;
-import Interfases.Checkbox;
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;

@@ -1,6 +1,6 @@
 package components.InterfasesForElementBase;
 
-public interface ElementBase {
+public interface ElementBaseInterface {
     boolean isDisplayed();
     void click();
     String getText();

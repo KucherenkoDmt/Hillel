@@ -1,6 +1,7 @@
 package components.implementations;
 
 import WebDriver.Checkbox2;
+import components.ElementBase;
 import org.openqa.selenium.WebElement;
 
 public class CheckboxWwithLabel extends ElementBase {

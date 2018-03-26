@@ -1,9 +1,9 @@
-package components.implementations;
+package components;
 
+import components.InterfasesForElementBase.Checkbox;
 import org.openqa.selenium.WebElement;
 
-public class CheckBox extends ElementBase implements components.interfaces.CheckBox
-{
+public class CheckBox extends ElementBase implements Checkbox {
     public CheckBox(WebElement element) {
         super(element);
     }
@@ -21,7 +21,6 @@ public class CheckBox extends ElementBase implements components.interfaces.Check
         if (isChecked()){
             click();
         }
-
     }
 
     @Override

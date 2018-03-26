@@ -1,4 +1,4 @@
-package InterfasesForElementBase;
+package components.InterfasesForElementBase;
 
 public interface Checkbox {
     void check();

@@ -1,13 +1,13 @@
 package WebDriver;
 
-import InterfasesForElementBase.ElementBase;
-import InterfasesForElementBase.Getter;
+import components.InterfasesForElementBase.ElementBaseInterface;
+import components.InterfasesForElementBase.Getter;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
 import java.util.List;
 
-public class Element implements ElementBase, Getter {
+public class Element implements ElementBaseInterface, Getter {
 
     private WebElement element;
 
@@ -18,8 +18,8 @@ public class Element implements ElementBase, Getter {
         this.element = element;
     }
 
-    @Override
-    public boolean isDisplayd() {
+      @Override
+    public boolean isDisplayed() {
         return this.element.isDisplayed();
     }
 

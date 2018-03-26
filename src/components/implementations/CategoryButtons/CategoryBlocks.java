@@ -1,7 +1,7 @@
 package components.implementations.CategoryButtons;
 
+import components.ElementBase;
 import components.implementations.CheckboxWwithLabel;
-import components.implementations.ElementBase;
 import org.openqa.selenium.WebElement;
 
 import java.util.List;
