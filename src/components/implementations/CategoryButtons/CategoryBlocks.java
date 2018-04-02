@@ -1,9 +1,10 @@
 package components.implementations.CategoryButtons;
 
 import components.ElementBase;
-import components.implementations.CheckboxWwithLabel;
+import components.implementations.CheckBoxWithLabel;
 import org.openqa.selenium.WebElement;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class CategoryBlocks extends ElementBase {
@@ -12,9 +13,14 @@ public class CategoryBlocks extends ElementBase {
     }
 
     public ElementBase headerLabel(){
-        return null;
+        return new ElementBase(getElement("//div[@class='category-list-title']"));
     }
-    public List<CheckboxWwithLabel> categories(){
-        return null;
+    public List<CheckBoxWithLabel> categories(){
+        List<WebElement> webElements = getElements("//div");
+        List<CheckBoxWithLabel> toReturn = new ArrayList<>();
+        for(WebElement webElement : webElements){
+            toReturn.add(new CheckBoxWithLabel(webElement));
+        }
+        return toReturn;
     }
 }
