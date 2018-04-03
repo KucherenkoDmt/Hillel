@@ -1,5 +1,6 @@
-package components;
+package components.ElaementBaseClasses;
 
+import components.ElaementBaseClasses.ElementBase;
 import components.InterfasesForElementBase.Checkbox;
 import org.openqa.selenium.WebElement;
 

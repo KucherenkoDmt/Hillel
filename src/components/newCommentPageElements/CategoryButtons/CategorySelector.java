@@ -1,6 +1,6 @@
-package components.implementations.CategoryButtons;
+package components.newCommentPageElements.CategoryButtons;
 
-import components.ElementBase;
+import components.ElaementBaseClasses.ElementBase;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import java.util.List;
@@ -13,7 +13,7 @@ public class CategorySelector extends ElementBase {
     public CategoryBlocks availableCats(){
         List<WebElement> blocks = getElements("//div[@class='categories']");
         WebElement availableCatsWebEl =
-         blocks.stream().filter(i -> i.findElement(By.xpath("//[@class='category-list-title']")).
+         blocks.stream().filter(i -> i.findElement(By.xpath("//*[@class='category-list-title']")).
                  getText().contains("Available")).findAny().get();
         return new CategoryBlocks(availableCatsWebEl);
     }

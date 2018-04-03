@@ -3,7 +3,9 @@ package components;
 import HomeWork.Log.ConsoleLogger;
 import HomeWork.Log.Logger;
 import HomeWork.UrlBuilder.Url;
-import components.CommentFielsHomeWork.CommentFiels;
+import components.newCommentPageElements.CommentFields.CommentFields;
+import components.newCommentPageElements.CategoryButtons.CategorySelector;
+import components.pages.NewCommentPage;
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
@@ -12,7 +14,6 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -36,6 +37,8 @@ public class CommentsTest {
 
         log("Navigate to Url ");
         driver.get(urlOfComments.getUrl());
+
+
     }
 
     @Test
@@ -53,7 +56,7 @@ public class CommentsTest {
         log("Add original number");
      //   type("//*[@id='Number']", number + "");
 
-        CommentFiels commentfiels = new CommentFiels(driver.findElement(By.xpath("//div[@id='commentfields']")));
+        CommentFields commentfiels = new CommentFields(driver.findElement(By.xpath("//div[@id='commentfields']")));
         commentfiels.commentText().typeText(commentText);
         commentfiels.commentNumber().typeText(number + "");
         commentfiels.commentActive().check();
@@ -61,14 +64,15 @@ public class CommentsTest {
         log("Add 1 category");
         String categories = "Cat1";
         // WebElement categoryCheckBox = driver.findElement(By.cssSelector("#alvailablecategories")).findElement(By.cssSelector(".categoryitem")).findElement(By.cssSelector("input#Categories"));
-        //  categoryCheckBox.click();
+        // categoryCheckBox.click();
         click("//*[@class=\"categoryitem\"]/span[contains(text(),'" + categories + "')]/../*[@type]");
         driver.findElement(By.name("CurSelect")).click();
-       /* WebElement element = driver.findElement(By.xpath("//div[@class='categoryselector']"));
+
+      /*  WebElement element = driver.findElement(By.xpath("//div[@id='categoryselector']"));
         CategorySelector categorySelector = new CategorySelector(element);
-        categorySelector.selectCat().categories().get(0).checkBox().check();
-        categorySelector.selectedButtons().add().click();
-        categorySelector.availableCats().categories().size();*/
+        categorySelector.availableCats().categories().get(0).checkBox().check();
+        Thread.sleep(500);
+        categorySelector.selectedButtons().add().click();*/
 
         log("Click save");
         click("//*[@id='editor-navigation']/input[1]");
@@ -92,7 +96,30 @@ public class CommentsTest {
         //  log("Value of comments is the same: " + namberAndCategories);
     }
 
-    @Test
+   // @Test
+    public void pageObjectHomeWork() throws IOException {
+        log("Get element \"New...\" and click");
+        click("//input[@value='New...']");
+        wait.until(ExpectedConditions.titleIs("Editor"));
+
+        NewCommentPage commentPage = new NewCommentPage(driver);
+        log("add text");
+        commentPage.form().commentText().addText("Commentariy");
+        log("add number");
+        commentPage.form().commentNumber().typeText("541");
+        log("check checkbox");
+        commentPage.form().commentActive().check();
+        log("set first cat");
+        commentPage.selector().availableCats().categories().get(1).checkBox().check();
+        log("click add cat");
+        commentPage.selector().selectedButtons().add().click();
+        log("save");
+        commentPage.headerButtons().saveButton();
+        log("return");
+        commentPage.headerButtons().returnButton();
+    }
+
+  //  @Test
     public void deleteComment() throws IOException, InterruptedException {
         String commentToDelete = "Comment Text 29";
         log("Check comment on all pages");

@@ -1,7 +1,7 @@
-package components.implementations.CategoryButtons;
+package components.newCommentPageElements.CategoryButtons;
 
-import components.ElementBase;
-import components.implementations.CheckBoxWithLabel;
+import components.ElaementBaseClasses.ElementBase;
+import components.newCommentPageElements.CheckBoxWithLabel;
 import org.openqa.selenium.WebElement;
 
 import java.util.ArrayList;

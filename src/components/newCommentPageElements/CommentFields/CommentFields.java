@@ -1,12 +1,12 @@
-package components.CommentFielsHomeWork;
+package components.newCommentPageElements.CommentFields;
 
-import components.CheckBox;
-import components.ElementBase;
-import components.Input;
+import components.ElaementBaseClasses.CheckBox;
+import components.ElaementBaseClasses.ElementBase;
+import components.ElaementBaseClasses.Input;
 import org.openqa.selenium.WebElement;
 
-public class CommentFiels extends ElementBase {
-    public CommentFiels(WebElement element) {
+public class CommentFields extends ElementBase {
+    public CommentFields(WebElement element) {
         super(element);
     }
     public Input commentText(){
